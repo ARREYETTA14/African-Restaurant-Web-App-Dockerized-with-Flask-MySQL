@@ -285,11 +285,11 @@ imagePath = 'https://african-restaurant-assets.s3.amazonaws.com/images/jollof.jp
 
 Place your food images inside ```web/static/images/``` folder:
 
-```jollof.jpg```
+- ```jollof.jpg```
 
-```egusi.jpg```
+- ```egusi.jpg```
 
-```bunny.jpg```
+- ```bunny.jpg```
 
 
 ### Put a Bucket Policy
