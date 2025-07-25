@@ -218,11 +218,11 @@ Interactive page with image preview.
 
 Upload your files like:
 
-- jollof.jpg
+- ```jollof.jpg```
 
-- egusi.jpg
+- ```egusi.jpg```
 
-- bunny.jpg
+- ```bunny.jpg```
 
 Inside a folder like ```/images``` if you want.
 
