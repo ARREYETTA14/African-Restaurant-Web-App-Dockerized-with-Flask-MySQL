@@ -202,7 +202,42 @@ Interactive page with image preview.
 </html>
 ```
 
-## Step 8: Add Your Images in S3
+## Step 8: Write Your CSS - web/static/styles.css
+```css
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff3e6;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    color: #cc5500;
+}
+
+form {
+    margin-top: 30px;
+}
+
+#foodImage {
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+```
+
+## Step 9: Initialize the Database - db/init.sql
+```sql
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    food VARCHAR(255)
+);
+```
+
+
+After creating all the folders and files in the Ec2 instnance, do the following
+
+## Step 10: Add Your Images in S3
 
 ### Create an S3 Bucket
 
@@ -214,7 +249,7 @@ Interactive page with image preview.
 
 - Create the bucket 
 
-### 2. Upload Your Images
+### Upload Your Images
 
 Upload your files like:
 
@@ -287,42 +322,40 @@ Then, add this bucket policy:
 ```
 Replace ```your-bucket-name``` with the actual name.
 
-## Step 9: Write Your CSS - web/static/styles.css
-```css
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fff3e6;
-    text-align: center;
-    padding: 50px;
-}
-
-h1 {
-    color: #cc5500;
-}
-
-form {
-    margin-top: 30px;
-}
-
-#foodImage {
-    margin-top: 20px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
-    border-radius: 10px;
-}
-```
-
-## Step 10: Initialize the Database - db/init.sql
-```sql
-CREATE TABLE orders (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    food VARCHAR(255)
-);
-```
 
 ## Step 11: Build and Run the Project
+
+Log back into the Instance and run the application.
 
 From your restaurant-app folder:
 
 ```bash
 docker-compose up --build
+```
+
+## Step 12: Access the App
+
+- Open browser → ```http://localhost:5000```
+
+- Pick a food — the image shows instantly.
+
+- Click **Order** — your choice is saved in MySQL.
+
+- See confirmation message.
+
+## Step 13: Check the Orders in MySQL
+
+Get into the MySQL container terminal:
+
+```bash
+docker exec -it restaurant-app_db_1 mysql -uroot -p
+```
+
+Password: ```restaurant```
+
+Run:
+
+```sql
+USE orders;
+SELECT * FROM orders;
 ```
