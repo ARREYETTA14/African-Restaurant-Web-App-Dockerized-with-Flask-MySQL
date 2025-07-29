@@ -4,6 +4,7 @@ Containerised African restaurant web app built with Flask and MySQL. Users selec
 ## Project Structure
 
 ```csharp
+EC2 Instance:
 restaurant-app/
 │
 ├── docker-compose.yml
@@ -16,7 +17,12 @@ restaurant-app/
     ├── app.py
     ├── index.html
     ├── requirements.txt
-    └── static/
+
+S3 Bucket
+│
+│
+│
+└── static/
         ├── styles.css
         └── images/
             ├── jollof.jpg
@@ -41,19 +47,16 @@ Inside ```restaurant-app```, create folders and files:
 
 ```bash
 mkdir web
-mkdir web/static
-mkdir web/static/images
 mkdir db
 ```
 
-Create the following files:
+Create the following files in the appropriate directories as per the Project structure:
 
 - ```docker-compose.yml```
 - ```web/Dockerfile```
 - ```web/app.py```
 - ```web/requirements.txt```
 - ```web/index.html```
-- ```web/static/styles.css```
 - ```db/init.sql```
 
 ## Step 3: Write docker-compose.yml
@@ -283,15 +286,6 @@ Use:
 imagePath = 'https://african-restaurant-assets.s3.amazonaws.com/images/jollof.jpg';
 ```
 
-Place your food images inside ```web/static/images/``` folder:
-
-- ```jollof.jpg```
-
-- ```egusi.jpg```
-
-- ```bunny.jpg```
-
-
 ### Put a Bucket Policy
 
 - Go to the bucket
@@ -359,3 +353,12 @@ Run:
 USE orders;
 SELECT * FROM orders;
 ```
+
+**NB**
+You must attach an IAM role to your EC2 instance if your Flask app or any other component in your container is ever going to pull images from private S3 buckets programmatically.
+But since you're using public S3 URLs in your frontend, technically, you don’t need a role if:
+Your bucket is public.
+You're not using the AWS SDK or CLI inside your app.
+However, if you ever plan to secure that bucket or use private links (signed URLs), then:
+✅ Create an IAM role with AmazonS3ReadOnlyAccess.
+✅ Attach it to your EC2 instance.
