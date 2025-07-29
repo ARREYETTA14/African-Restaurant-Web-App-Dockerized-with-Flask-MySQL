@@ -5,6 +5,7 @@ Containerised African restaurant web app built with Flask and MySQL. Users selec
 
 ```csharp
 EC2 Instance:
+
 restaurant-app/
 │
 ├── docker-compose.yml
@@ -18,16 +19,13 @@ restaurant-app/
     ├── index.html
     ├── requirements.txt
 
-S3 Bucket
-│
-│
-│
-└── static/
-        ├── styles.css
-        └── images/
-            ├── jollof.jpg
-            ├── egusi.jpg
-            └── bunny.jpg
+S3 Bucket:
+static/
+    ├── styles.css
+    └── images/
+          ├── jollof.jpg
+          ├── egusi.jpg
+          └── bunny.jpg
 ```
 
 ## Step 1: Create Your Project Folder
