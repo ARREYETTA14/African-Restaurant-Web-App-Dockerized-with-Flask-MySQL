@@ -354,10 +354,10 @@ SELECT * FROM orders;
 **NB**
 You must attach an IAM role to your EC2 instance if your Flask app or any other component in your container is ever going to pull images from private S3 buckets programmatically.
 But since you're using public S3 URLs in your frontend, technically, you don’t need a role if:
-Your bucket is public.
+Your bucket is public. You're not using the AWS SDK or CLI inside your app.
 
-You're not using the AWS SDK or CLI inside your app.
 However, if you ever plan to secure that bucket or use private links (signed URLs), then:
 
 ✅ Create an IAM role with AmazonS3ReadOnlyAccess.
+
 ✅ Attach it to your EC2 instance.
