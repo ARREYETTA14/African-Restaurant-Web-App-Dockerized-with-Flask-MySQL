@@ -23,7 +23,7 @@ S3 Bucket:
 static/
     ├── styles.css
     └── images/
-          ├── jollof.jpg
+          ├── eru.jpg
           ├── egusi.jpg
           └── bunny.jpg
 ```
@@ -167,7 +167,7 @@ Interactive page with image preview.
     <label for="food">Choose your food:</label><br>
     <select name="food" id="food" onchange="showImage()">
       <option value="">--Select--</option>
-      <option value="Jollof Rice">Jollof Rice</option>
+      <option value="Jollof Rice">Eru</option>
       <option value="Egusi Soup">Egusi Soup</option>
       <option value="Bunny Chow">Bunny Chow</option>
     </select>
@@ -183,8 +183,8 @@ Interactive page with image preview.
       const image = document.getElementById('foodImage');
       let imagePath = '';
 
-      if (food === 'Jollof Rice') {
-        imagePath = '/static/images/jollof.jpg';
+      if (food === 'Eru') {
+        imagePath = '/static/images/eru.jpg';
       } else if (food === 'Egusi Soup') {
         imagePath = '/static/images/egusi.jpg';
       } else if (food === 'Bunny Chow') {
@@ -255,7 +255,7 @@ form {
 
 Upload your Image files in a created folder called ```/images```:
 
-- ```jollof.jpg```
+- ```eru.jpg```
 
 - ```egusi.jpg```
 
@@ -267,20 +267,20 @@ Once uploaded:
 
 - Click on each image
 
-- Copy the Object URL (e.g., ```https://african-restaurant-assets.s3.amazonaws.com/images/jollof.jpg```)
+- Copy the Object URL (e.g., ```https://african-restaurant-assets.s3.amazonaws.com/images/eru.jpg```)
 
 ### Update Your index.html JavaScript to Use S3 Links
 
 Instead of:
 
 ```js
-imagePath = '/static/images/jollof.jpg';
+imagePath = '/static/images/eru.jpg';
 ```
 
 Use:
 
 ```js
-imagePath = 'https://african-restaurant-assets.s3.amazonaws.com/images/jollof.jpg';
+imagePath = 'https://african-restaurant-assets.s3.amazonaws.com/images/eru.jpg';
 ```
 
 ### Put a Bucket Policy
