@@ -203,7 +203,33 @@ Interactive page with image preview.
 </html>
 ```
 
-## Step 8: Write Your CSS - web/static/styles.css
+## Step 8: Initialize the Database - db/init.sql
+```sql
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    food VARCHAR(255)
+);
+```
+
+
+After creating all the folders and files in the Ec2 instnance, do the following
+
+## Step 9: Add Your Images in S3
+
+### Create an S3 Bucket
+
+- Go to AWS S3 Console
+
+- Give it a name like ```african-restaurant-assets```
+
+- Enable public access
+
+- Create the bucket 
+
+### Upload Your CSS file and Images
+
+Upload your ```css``` file:
+
 ```css
 body {
     font-family: Arial, sans-serif;
@@ -227,40 +253,13 @@ form {
 }
 ```
 
-## Step 9: Initialize the Database - db/init.sql
-```sql
-CREATE TABLE orders (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    food VARCHAR(255)
-);
-```
-
-
-After creating all the folders and files in the Ec2 instnance, do the following
-
-## Step 10: Add Your Images in S3
-
-### Create an S3 Bucket
-
-- Go to AWS S3 Console
-
-- Give it a name like ```african-restaurant-assets```
-
-- Enable public access
-
-- Create the bucket 
-
-### Upload Your Images
-
-Upload your files like:
+Upload your Image files in a created folder called ```/images```:
 
 - ```jollof.jpg```
 
 - ```egusi.jpg```
 
 - ```bunny.jpg```
-
-Inside a folder like ```/images``` if you want.
 
 ### Get the Public URLs
 
@@ -315,7 +314,7 @@ Then, add this bucket policy:
 Replace ```your-bucket-name``` with the actual name.
 
 
-## Step 11: Build and Run the Project
+## Step 10: Build and Run the Project
 
 Log back into the Instance and run the application.
 
@@ -325,7 +324,7 @@ From your restaurant-app folder:
 docker-compose up --build
 ```
 
-## Step 12: Access the App
+## Step 11: Access the App
 
 - Open browser → ```http://localhost:5000```
 
@@ -335,7 +334,7 @@ docker-compose up --build
 
 - See confirmation message.
 
-## Step 13: Check the Orders in MySQL
+## Step 12: Check the Orders in MySQL
 
 Get into the MySQL container terminal:
 
