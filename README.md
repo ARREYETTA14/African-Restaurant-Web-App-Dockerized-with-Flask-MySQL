@@ -34,6 +34,29 @@ In you AWS Account, Launch an Ec2 instance with instance type at least ```t3.med
 
 SSH into the Instance:
 
+- Install Docker and Docker Compose:
+```bash
+sudo yum update -y
+sudo amazon-linux-extras install docker -y
+sudo service docker start
+sudo usermod -aG docker ec2-user
+```
+Verify if Docker and Docker Compose are available:
+```bash
+docker version
+docker-compose version
+```
+Docker Compose v2 is now bundled into Docker in many recent distros, but just in case, here’s the manual method:
+```bash
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+Make it executable:
+```bash
+sudo chmod +x /usr/local/bin/docker-compose
+```
+Check now if it's available.
+- Create the following directory
+
 ```bash
 mkdir restaurant-app
 cd restaurant-app
