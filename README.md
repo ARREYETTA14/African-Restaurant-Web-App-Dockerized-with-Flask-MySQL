@@ -370,7 +370,7 @@ Log back into the Instance and run the application.
 From your restaurant-app folder:
 
 ```bash
-docker-compose up --build
+sudo docker compose up --build
 ```
 
 ## Step 11: Access the App
