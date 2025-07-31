@@ -30,32 +30,56 @@ static/
 
 ## Step 1: Create Your Project Folder
 
-In you AWS Account, Launch an Ec2 instance with instance type at least ```t3.medium``` with ports, ```5000```.
+In you AWS Account, Launch an ```Amazon Linux 2023``` Ec2 instance with instance type at least ```t3.medium``` with ports, ```5000```.
 
 SSH into the Instance:
 
 - Install Docker and Docker Compose:
 ```bash
-sudo yum update -y
-sudo amazon-linux-extras install docker -y
+sudo dnf update -y
+sudo dnf install docker -y
 sudo service docker start
+sudo systemctl start docker
+sudo systemctl enable docker
 sudo usermod -aG docker ec2-user
 ```
 Verify if Docker and Docker Compose are available:
 ```bash
 docker version
-docker-compose version
+docker compose version
 ```
 Docker Compose v2 is now bundled into Docker in many recent distros, but just in case, here’s the manual method:
+
+Find out your system architecture
+Run this:
 ```bash
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+uname -m
 ```
-Make it executable:
+If you get:
+
+```x86_64``` → you're on 64-bit Intel/AMD
+
+```aarch64``` → you're on ARM (like Graviton)
+
+Let’s assume x86_64 for now (most EC2 instances).
+
+Run the Following Commands:
+
 ```bash
-sudo chmod +x /usr/local/bin/docker-compose
+# Create the plugin directory
+sudo mkdir -p /usr/local/lib/docker/cli-plugins
+
+# Download Compose v2 plugin binary
+sudo curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 \
+-o /usr/local/lib/docker/cli-plugins/docker-compose
+
+# Make it executable
+sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+
+# Test it
+docker compose version
 ```
-Check now if it's available.
-- Create the following directory
+For ARM (Graviton) instances, replace ```x86_64``` with ```aarch64```.
 
 ```bash
 mkdir restaurant-app
