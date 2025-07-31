@@ -421,7 +421,3 @@ However, if you ever plan to secure that bucket or use private links (signed URL
 ✅ Create an IAM role with AmazonS3ReadOnlyAccess.
 
 ✅ Attach it to your EC2 instance.
-
-
-
-jjjj
