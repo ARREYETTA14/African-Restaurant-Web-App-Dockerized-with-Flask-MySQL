@@ -30,7 +30,7 @@ static/
 
 ## Step 1: Create Your Project Folder
 
-In you AWS Account, Launch an Ec2 instance with instance type at least ```t3.medium``` with ports, ```8080```, ```80```.
+In you AWS Account, Launch an Ec2 instance with instance type at least ```t3.medium``` with ports, ```5000```.
 
 SSH into the Instance:
 
@@ -190,7 +190,7 @@ Interactive page with image preview.
     <label for="food">Choose your food:</label><br>
     <select name="food" id="food" onchange="showImage()">
       <option value="">--Select--</option>
-      <option value="Jollof Rice">Eru</option>
+      <option value="Eru">Eru</option>
       <option value="Egusi Soup">Egusi Soup</option>
       <option value="Bunny Chow">Bunny Chow</option>
     </select>
