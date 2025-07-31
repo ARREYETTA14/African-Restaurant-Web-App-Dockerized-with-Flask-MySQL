@@ -171,7 +171,7 @@ mysql-connector-python
 Your Flask backend serving the page and handling orders.
 
 ```python
-from flask import Flask, request
+from flask import Flask, request, redirect, url_for
 import mysql.connector
 import os
 
@@ -184,6 +184,8 @@ def home():
 @app.route('/order', methods=['POST'])
 def order():
     food = request.form['food']
+
+    # Connect to the database
     db = mysql.connector.connect(
         host=os.environ['DB_HOST'],
         user=os.environ['DB_USER'],
@@ -193,10 +195,19 @@ def order():
     cursor = db.cursor()
     cursor.execute("INSERT INTO orders (food) VALUES (%s)", (food,))
     db.commit()
-    return "Order received for: " + food
+    cursor.close()
+    db.close()
+
+    # Redirect using PRG pattern
+    return redirect(url_for('order_received', food=food))
+
+@app.route('/order-received')
+def order_received():
+    food = request.args.get('food', 'your meal')
+    return f"Order received for: {food}"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000)
 ```
 
 ## Step 7: Write web/index.html
@@ -410,3 +421,7 @@ However, if you ever plan to secure that bucket or use private links (signed URL
 ✅ Create an IAM role with AmazonS3ReadOnlyAccess.
 
 ✅ Attach it to your EC2 instance.
+
+
+
+jjjj
