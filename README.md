@@ -50,7 +50,7 @@ docker compose version
 ```
 Docker Compose v2 is now bundled into Docker in many recent distros, but just in case, here’s the manual method:
 
-Find out your system architecture
+First, find out your system architecture
 Run this:
 ```bash
 uname -m
@@ -80,6 +80,8 @@ sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 docker compose version
 ```
 For ARM (Graviton) instances, replace ```x86_64``` with ```aarch64```.
+
+After that, create the following directory and navigate into it:
 
 ```bash
 mkdir restaurant-app
