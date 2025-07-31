@@ -388,7 +388,7 @@ sudo docker compose up --build
 Get into the MySQL container terminal:
 
 ```bash
-docker exec -it restaurant-app_db_1 mysql -uroot -p
+docker exec -it restaurant-app-db-1 mysql -uroot -p 
 ```
 
 Password: ```restaurant```
