@@ -4,21 +4,21 @@ Containerised African restaurant web app built with Flask and MySQL. Users selec
 ## HIGH LEVEL ARCHITECTURE
 
 ```plaintext
-                                                        🌐 USER BROWSER
-                                                               |
-                                                               v
-                                                +-----------------------------+
-                                                |      Flask Container        |
-                                                |    (Frontend + Backend)     |
-                                                +-----------------------------+
-                                                               |
-                                                         SQL CONNECTION
-                                                               |
-                                                               v
-                                                +-----------------------------+
-                                                | DATABASE (MYSQL CONTAINER) |
-                                                | Persistent Orders Data     |
-                                                +-----------------------------+
+                                          🌐 USER BROWSER
+                                                 |
+                                                 v
+                                  +-----------------------------+
+                                  |      Flask Container        |
+                                  |    (Frontend + Backend)     |
+                                  +-----------------------------+
+                                                 |
+                                           SQL CONNECTION
+                                                 |
+                                                 v
+                                  +-----------------------------+
+                                  | DATABASE (MYSQL CONTAINER) |
+                                  | Persistent Orders Data     |
+                                  +-----------------------------+
 
 ```
 
