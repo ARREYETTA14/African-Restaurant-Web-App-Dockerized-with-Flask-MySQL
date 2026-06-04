@@ -24,7 +24,7 @@ Containerised African restaurant web app built with Flask and MySQL. Users selec
 
 ## Project Structure
 
-```plaintext
+```csharp
 EC2 Instance:
 
 restaurant-app/
