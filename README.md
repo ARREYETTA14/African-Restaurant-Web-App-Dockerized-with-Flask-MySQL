@@ -1,5 +1,26 @@
-# African-Restaurant-Web-App-Dockerized-with-Flask-MySQL
+# African-Restaurant-Web-App-Dockerized-with-Flask-MySQL (2-tier Architecture)
 Containerised African restaurant web app built with Flask and MySQL. Users select dishes, see images instantly, and place orders stored persistently in MySQL. Docker Compose orchestrates the multi-container setup for easy deployment and data management.
+
+## HIGH LEVEL ARCHITECTURE
+
+```csharp
+                🌐 USER BROWSER
+                       |
+                       v
+        +-----------------------------+
+        |      Flask Container        |
+        |    (Frontend + Backend)     |
+        +-----------------------------+
+                       |
+                 SQL CONNECTION
+                       |
+                       v
+        +-----------------------------+
+        | DATABASE (MYSQL CONTAINER) |
+        | Persistent Orders Data     |
+        +-----------------------------+
+
+```
 
 ## Project Structure
 
@@ -30,7 +51,7 @@ static/
 
 ## Step 1: Create Your Project Folder
 
-In you AWS Account, Launch an ```Amazon Linux 2023``` Ec2 instance with instance type at least ```t3.medium``` with ports, ```5000```.
+In your AWS Account, Launch an ```Amazon Linux 2023``` Ec2 instance with an instance type of at least ```t3.medium``` with ports `5000```.
 
 SSH into the Instance:
 
@@ -168,7 +189,7 @@ mysql-connector-python
 
 ## Step 6: Write web/app.py
 
-Your Flask backend serving the page and handling orders.
+Your Flask backend serves the page and handles orders.
 
 ```python
 from flask import Flask, request, redirect, url_for
@@ -263,7 +284,7 @@ Interactive page with image preview.
 </html>
 ```
 
-## Step 8: Initialize the Database - db/init.sql
+## Step 8: Initialise the Database - db/init.sql
 ```sql
 CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -272,9 +293,9 @@ CREATE TABLE orders (
 ```
 
 
-After creating all the folders and files in the Ec2 instnance, do the following
+After creating all the folders and files in the EC2 instance, do the following
 
-## Step 9: Add Your Images in S3
+## Step 9: Add Your Images to S3
 
 ### Create an S3 Bucket
 
@@ -333,13 +354,13 @@ Once uploaded:
 
 Instead of:
 
-```js
+``` js
 imagePath = '/static/images/eru.jpg';
 ```
 
 Use:
 
-```js
+``` js
 imagePath = 'https://african-restaurant-assets.s3.amazonaws.com/images/eru.jpg';
 ```
 
