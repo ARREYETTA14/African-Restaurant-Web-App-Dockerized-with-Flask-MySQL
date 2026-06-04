@@ -3,7 +3,7 @@ Containerised African restaurant web app built with Flask and MySQL. Users selec
 
 ## HIGH LEVEL ARCHITECTURE
 
-```
+```plaintext
                                                         🌐 USER BROWSER
                                                                |
                                                                v
